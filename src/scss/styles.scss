@@ -1,0 +1,14 @@
+body {
+  /* Created with https://www.css-gradient.com */
+  background: #09043d;
+  overflow: hidden;
+}
+
+.sky {
+  background: radial-gradient(ellipse at center, #09043d, #0f0117);
+  position: relative;
+  transform: translate(-50%);
+}
+.star {
+  position: absolute;
+}
