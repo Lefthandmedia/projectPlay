@@ -1,3 +1,5 @@
+import { degrees_to_radians } from "./utils/degrees_to_radians";
+
 class Star {
   constructor(src, r = null, ang = null) {
     this.src = src;
@@ -19,18 +21,24 @@ class Star {
     };
 
     if (this.r === null) this.r = probability() * window.innerWidth;
-    if (this.ang === null) this.ang = Math.random() * Math.PI * 2;
+    if (this.ang === null) this.ang = Math.random() * 360;
     this.star.dataset.r = this.r;
     this.star.dataset.ang = this.ang;
-    this.star.style.left = `${Math.sin(this.ang) * this.r}px`;
-    this.star.style.top = `${Math.cos(this.ang) * this.r}px`;
-    this.star.style.transform = `rotate(${this.ang}rad)`;
+    this.star.style.left = `${
+      Math.cos(degrees_to_radians(this.ang)) * this.r
+    }px`;
+    this.star.style.top = `${
+      Math.sin(degrees_to_radians(this.ang)) * this.r
+    }px`;
+    this.star.style.opacity = `${Math.random()}`;
+    this.star.style.transform = `rotate(${this.ang + 90}deg)`;
   }
 
   makeSign() {
     console.log("rotateNormal");
     this.r = window.innerWidth / 2;
-    this.star.style.transform = `rotate(${this.ang}rad)`;
+    // this.star.style.transform = `rotate(${this.ang}rad)`;
+    this.star.style.opacity = 1;
     this.star.style.marginLeft = `-200px`;
     this.star.style.marginTop = `-200px`;
     this.star.classList.add("sign");

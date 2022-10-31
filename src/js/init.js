@@ -9,15 +9,17 @@ export default init = () => {
   document.body.appendChild(gradient);
 
   const _s = sky();
-  const { el, rotate } = _s;
+  const { el, rotate, Getrotation, sign, check } = _s;
   document.body.appendChild(el);
   document.addEventListener(
     "keydown",
     function (event) {
-      console.log("key", event.key);
       switch (event.key) {
         case "a":
           rotate(-10);
+
+          console.log("getrot", Getrotation());
+          console.log("getrot-el", sign.ang);
           break;
 
         case "s":
@@ -27,7 +29,12 @@ export default init = () => {
     },
     false
   );
+  const win = () => {
+    console.log("check");
+    check();
+  };
 
   const { map } = minimap();
+  map.addEventListener("click", win);
   document.body.appendChild(map);
 };

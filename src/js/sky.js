@@ -3,6 +3,7 @@ import gsap from "gsap";
 
 const sky = () => {
   const el = document.createElement("div");
+  let sign;
   const srcs = [
     "/img/star-0.png",
     "/img/star-1.png",
@@ -32,8 +33,7 @@ const sky = () => {
 
   const addSign = () => {
     signSrc = "/img/sign-1.png";
-    const sign = new Star(signSrc, 500);
-    console.log("sign", sign);
+    sign = new Star(signSrc, 500);
     sign.position();
     sign.makeSign();
     el.appendChild(sign.star);
@@ -42,12 +42,23 @@ const sky = () => {
   const rotate = (gr) => {
     gsap.set(el, { transformOrigin: "50% 50%" });
     gsap.to(el, { rotation: `+=${gr}deg` });
-    console.log(el.style.transform);
+  };
+
+  const Getrotation = () => {
+    var r = el.style.transform.match(/rotate\((.+)\)/)[1];
+    return r;
+  };
+
+  const check = () => {
+    console.log("sky sign", sign, Getrotation(), sign.star.dataset.ang - 90);
+    if (Math.abs(Getrotation() - sign.star.dataset.ang) < 10) {
+      console.log("WINNER");
+    }
   };
 
   build();
 
-  return { el, rotate };
+  return { el, rotate, Getrotation, sign, check };
 };
 
 export default sky;
