@@ -35,13 +35,12 @@ class Star {
   }
 
   makeSign() {
-    console.log("rotateNormal");
-    this.r = window.innerWidth / 2;
-    // this.star.style.transform = `rotate(${this.ang}rad)`;
-    this.star.style.opacity = 1;
-    this.star.style.marginLeft = `-200px`;
-    this.star.style.marginTop = `-200px`;
-    this.star.classList.add("sign");
+    // this.r = window.innerWidth / 2;
+    // // this.star.style.transform = `rotate(${this.ang}rad)`;
+    // this.star.style.opacity = 1;
+    // this.star.style.marginLeft = `-200px`;
+    // this.star.style.marginTop = `-200px`;
+    // this.star.classList.add("sign");
   }
 
   shimmer() {

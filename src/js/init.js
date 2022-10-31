@@ -3,13 +3,14 @@ import { minimap } from "./minimap";
 
 export default init = () => {
   console.log("init");
+  let debug = false;
 
   const gradient = document.createElement("div");
   gradient.classList.add("gradient");
   document.body.appendChild(gradient);
 
   const _s = sky();
-  const { el, rotate, Getrotation, sign, check } = _s;
+  const { el, rotate, sign, checkWin } = _s;
   document.body.appendChild(el);
   document.addEventListener(
     "keydown",
@@ -17,9 +18,6 @@ export default init = () => {
       switch (event.key) {
         case "a":
           rotate(-10);
-
-          console.log("getrot", Getrotation());
-          console.log("getrot-el", sign.ang);
           break;
 
         case "s":
@@ -29,9 +27,10 @@ export default init = () => {
     },
     false
   );
+
   const win = () => {
-    console.log("check");
-    check();
+    console.log("Did i win?");
+    checkWin();
   };
 
   const { map } = minimap();
