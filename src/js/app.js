@@ -1,7 +1,7 @@
-import i from './init.js';
+import init from './init.js';
 
 (function () {
   console.log('load');
-  i();
+  init();
 
 })();

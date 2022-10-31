@@ -1,9 +1,34 @@
 import sky from './sky';
+import { minimap } from './minimap';
 
 export default init = () => {
   console.log('init');
-  const _sky = sky();
-  console.log('sky',_sky);
 
-  document.body.appendChild(_sky);
+
+  const gradient = document.createElement('div');
+  gradient.classList.add('gradient');
+  document.body.appendChild(gradient);
+  
+
+  const _s = sky();
+  const { el, rotate } = _s;
+  document.body.appendChild(el);
+  document.addEventListener('keydown', function(event) {
+    console.log('key', event.key);
+    switch (event.key) {
+      case 'a':
+        rotate(30);
+        break;
+      
+      case 's':
+        rotate(-30);
+        break;
+      
+
+    }
+  }, false);
+
+  const { map } = minimap();
+  document.body.appendChild(map);
+ 
 }
